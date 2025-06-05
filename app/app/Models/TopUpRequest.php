@@ -14,6 +14,7 @@ class TopUpRequest extends Model
     ];
     public function user()
     {
+        //my user relationship
         return $this->belongsTo(User::class);
     }
 }
