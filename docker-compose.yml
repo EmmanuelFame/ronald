@@ -19,10 +19,10 @@ services:
     container_name: ronald_mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
       MYSQL_DATABASE: ronald_db
       MYSQL_USER: ronald_user
-      MYSQL_PASSWORD: REMOVED_CREDENTIAL
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
     ports:
       - "3308:3306"
     volumes:
@@ -33,7 +33,7 @@ services:
     container_name: ronald-phpmyadmin
     environment:
       PMA_HOST: mysql
-      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in .env}
     ports:
       - "8082:80"
     depends_on:
